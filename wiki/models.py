@@ -36,3 +36,4 @@ class Page(models.Model):
 
         # Call save on the superclass.
         return super(Page, self).save(*args, **kwargs)
+

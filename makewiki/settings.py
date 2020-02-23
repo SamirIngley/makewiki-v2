@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'wiki'
+    'wiki',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,8 @@ LOGOUT_REDIRECT_URL = "/"
 # Required for Heroku
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+DEFAULT_LOGOUT_URL = '/'
+
 
 # PROTIP:
 # Need to override settings? Create a local_settings.py file
@@ -146,3 +149,4 @@ try:
     from makewiki.local_settings import *
 except ImportError:
     pass
+
