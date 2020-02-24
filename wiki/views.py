@@ -20,7 +20,7 @@ class PageListView(ListView):
         return render(request, 'list.html', {'pages': pages})
 
 class PageDetailView(DetailView):
-    """ Renders a specific page based on it's slug."""
+    """ Renders a specific page based on its slug."""
     model = Page
 
     def get(self, request, slug):
@@ -31,18 +31,10 @@ class PageDetailView(DetailView):
         })
 
 
-
 class PageCreateView(CreateView):
-  def get(self, request, *args, **kwargs):
-      context = {'form': FriendlyForm()}
-      return render(request, 'new.html', context)
-
-  def post(self, request, *args, **kwargs):
-      form = FriendlyForm(request.POST)
-      if form.is_valid():
-          page = form.save()
-          return HttpResponseRedirect(reverse_lazy('pages:detail', args=[book.id]))
-      return render(request, 'new.html', {'form': form})
+    model = Page
+    fields = ['title', 'content', 'author']
+    template_name = 'new.html'
 
 
 
